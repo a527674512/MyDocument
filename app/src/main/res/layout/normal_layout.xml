@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    <com.example.lhf.mydocument.customlayout.TitleLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="#00ff00"></com.example.lhf.mydocument.customlayout.TitleLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="this is a normal activity"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/show_alertdialog"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="show allert dialog"
+            />
+
+        <Button
+            android:id="@+id/show_progressdialog"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="show progress dialog"
+            />
+        <Button
+            android:id="@+id/btn_start_chat_activity"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="start chat activity"
+            />
+        <Button
+            android:id="@+id/btn_start_fragment_activity"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="start fragment activity"
+            />
+        <Button
+            android:id="@+id/btn_start_broadcast_activity"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="start broadcast activity"
+            />
+        <Button
+            android:id="@+id/btn_start_phone_list"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="start phone list"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_start_volley"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="btn start volley"
+            />
+
+        <Button
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="show progress dialog"
+            android:visibility="gone"
+            />
+        <Button
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="start chat activity"
+            android:visibility="gone"
+
+            />
+        <Button
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="start fragment activity"
+            android:visibility="gone"
+
+            />
+        <Button
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="start broadcast activity"
+            android:visibility="gone"
+
+            />
+        <Button
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:visibility="gone"
+
+            android:text="start phone list"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

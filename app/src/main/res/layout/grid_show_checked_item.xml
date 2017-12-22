@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="64dip"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/image_file_pic"
+        android:src="@drawable/folder"
+        android:layout_centerHorizontal="true"
+        android:layout_width="64dip"
+        android:layout_height="wrap_content"></ImageView>
+    <CheckedTextView
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:id="@+id/checked_text_file_name"
+        android:layout_alignRight="@+id/image_file_pic"
+        android:layout_alignBottom="@+id/image_file_pic"
+        android:layout_width="78dip"
+        android:layout_height="wrap_content"></CheckedTextView>
+   <TextView
+        android:layout_below="@+id/image_file_pic"
+        android:text="Androidsdfsdfsd"
+        android:singleLine="true" 
+        android:ellipsize="marquee"
+        android:textSize="20sp"
+        android:id="@+id/text_file_name"
+        android:layout_width="64dip"
+        android:layout_height="wrap_content"></TextView>
+</RelativeLayout>

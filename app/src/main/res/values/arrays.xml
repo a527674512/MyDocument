@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="operation_menu">
+        <item>打开</item>
+        <item>复制</item>
+        <item>移动</item>
+        <item>粘贴</item>
+        <item>重命名</item>
+        <item>删除</item>
+        <item>属性</item>
+    </string-array>
+    <string-array name="multi_manage">
+        <item>复制</item>
+        <item>移动</item>
+        <item>重命名</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="viewmode">
+        <item>列表</item>
+        <item>平铺</item>
+    </string-array>
+    <string-array name="viewmode_item">
+        <item>viewmode_list</item>
+        <item>viewmode_grid</item>
+    </string-array>
+    <string-array name="theme">
+        <item>默认</item>
+        <item>雪景</item>
+    </string-array>
+    <string-array name="theme_item">
+        <item>default</item>
+        <item>snow</item>
+    </string-array>
+    <string-array name="orderby">
+        <item>名称</item>
+        <item>大小</item>
+        <item>时间</item>
+        <item>类型</item>
+    </string-array>
+    <string-array name="orderby_item">
+        <item>name</item>
+        <item>size</item>
+        <item>time</item>
+        <item>type</item>
+    </string-array>
+    
+</resources>

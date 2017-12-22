@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="theme"
+        android:title="主题设置"
+        android:summary="修改主题风格"
+        android:dialogTitle="更改主题"
+        android:negativeButtonText="取消"
+        android:entryValues="@array/theme_item"
+        android:entries="@array/theme"></ListPreference>
+    <PreferenceCategory android:title="文件设置">
+        <CheckBoxPreference
+            android:summaryOff="隐藏以“.”开头的文件或文件夹"
+            android:summaryOn="显示以“.”开头的文件或文件夹"
+            android:title="显示隐藏文件"
+            android:key="hiddenfile"></CheckBoxPreference>
+        <ListPreference
+            android:summary="列表显示，平铺显示"
+            android:key="viewmode"
+            android:title="视图显示模式"
+            android:dialogTitle="视图显示模式"
+            android:negativeButtonText="取消"
+            android:entries="@array/viewmode"
+            android:entryValues="@array/viewmode_item"></ListPreference>
+        <EditTextPreference
+            android:summary="默认显示的文件夹"
+            android:key="homedir"
+            android:title="设置主目录"
+            android:dialogIcon="@drawable/icon"
+            android:dialogTitle="输入主目录"
+            android:positiveButtonText="确定"
+            android:negativeButtonText="取消"></EditTextPreference>
+        <ListPreference
+            android:summary="更改文件排列方式"
+            android:key="orderby"
+            android:dialogTitle="更改排序"
+            android:title="排序"
+            android:negativeButtonText="取消"
+            android:entryValues="@array/orderby_item"
+            android:entries="@array/orderby"></ListPreference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

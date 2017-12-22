@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/operation_menu_new"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/operation_menu_new">
+        <menu>
+            <item android:id="@+id/operation_menu_new_file" android:title="新建文件"></item>
+            <item android:id="@+id/operation_menu_new_folder" android:title="新建文件夹"></item>
+        </menu>
+        </item>
+    <item
+        android:id="@+id/operation_menu_favorites"
+        android:icon="@drawable/ic_menu_archive"
+        android:title="@string/operation_menu_favorites"></item>
+    <item
+        android:id="@+id/operation_menu_setting"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="@string/operation_menu_setting"></item>
+    <item
+        android:id="@+id/operation_menu_about"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/operation_menu_about"></item>
+    <item
+        android:id="@+id/operation_menu_multi_select"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="@string/operation_menu_multi_select"></item>
+    <item
+        android:id="@+id/operation_menu_help"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@string/operation_menu_help"></item>
+    <item
+        android:id="@+id/operation_menu_exit"
+        android:title="@string/operation_menu_exit"></item>
+</menu>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/imenu_operation" android:title="@string/menu_operation"></item>
+    <item android:id="@+id/menu_operation_cut" android:title="@string/menu_operation_cut"></item>
+    <item android:id="@+id/menu_operation_copy" android:title="@string/menu_operation_copy"></item>
+    <item android:id="@+id/menu_operation_rename" android:title="@string/menu_operation_rename"></item>
+    <item android:id="@+id/menu_operation_delete" android:title="@string/menu_operation_delete"></item>
+    <item android:id="@+id/menu_operation_moveto" android:title="@string/menu_operation_moveto"></item>
+    <item android:id="@+id/menu_operation_copyto" android:title="@string/menu_operation_copyto"></item>
+    <item android:id="@+id/menu_operation_selectall" android:title="@string/menu_operation_selectall"></item>
+    <item android:id="@+id/menu_operation_info" android:title="@string/menu_operation_info"></item>
+</menu>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <EditText
+        android:id="@+id/et_account_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="50dip"
+        android:layout_marginTop="30dip"
+        android:layout_marginRight="50dip"
+        android:background="#00ffff"
+        />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_below="@id/et_account_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="50dip"
+        android:layout_marginTop="30dip"
+        android:layout_marginRight="50dip"
+        android:background="#00ffff"
+        />
+    <Button
+        android:id="@+id/jump"
+        android:layout_width="100dip"
+        android:layout_height="50dip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dip"
+        android:layout_below="@+id/et_password"
+        android:text="登录"/>
+</RelativeLayout>
