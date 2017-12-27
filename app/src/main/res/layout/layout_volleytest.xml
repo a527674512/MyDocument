@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             android:id="@+id/btn_send_request"
             android:layout_width="100dip"
             android:layout_height="100dip"
             android:text="请求"/>
 
-    <Button
-        android:id="@+id/btn_send_json_request"
-        android:layout_width="100dip"
-        android:layout_height="100dip"
-        android:text="json请求"/>
+        <Button
+            android:id="@+id/btn_send_json_request"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="json请求"/>
 
-    <Button
-        android:id="@+id/btn_send_image_request"
-        android:layout_width="100dip"
-        android:layout_height="100dip"
-        android:text="image请求"/>
+        <Button
+            android:id="@+id/btn_send_image_request"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="image请求"/>
+        <Button
+            android:id="@+id/btn_send_imageloader_request"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="imageLoader请求"/>
+        <Button
+            android:id="@+id/btn_send_xmlrequest"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:text="xmlrequest请求"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/xml_request_response"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/iv_image_request"
@@ -26,4 +46,9 @@
         android:layout_height="100dip"
         android:layout_gravity="bottom"
         android:background="#00ffff"/>
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/iv_network"
+        android:layout_width="100dip"
+        android:layout_height="100dip" />
 </LinearLayout>
