@@ -1,12 +1,17 @@
 package com.example.lhf.mydocument.activity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -189,6 +194,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
      * 初始化文件列表
      */
     private void initFileList() {
+
         if (null != mHomeDir) {
             mCurrentDir = mHomeDir;
         } else {
@@ -204,7 +210,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
         MemoryManager.sort(mCurrentListFiles, mOrderBy);
         mMultiModeFiles = new File[mCurrentListFiles.length];
+
     }
+
+
     /**
      * 初始化ListView
      */

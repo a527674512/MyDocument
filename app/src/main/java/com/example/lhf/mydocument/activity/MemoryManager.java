@@ -18,6 +18,8 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import static com.example.lhf.mydocument.R.drawable.file;
+
 /**
  * Created by lenovo on 2017/9/21.
  */
@@ -81,9 +83,9 @@ public class MemoryManager {
      */
     public static File[] hideFileFilter(File dir) {
         File[] list = dir.listFiles(new FileFilter() {
-
-            public boolean accept(File pathname) {
-                return !pathname.isHidden();
+            @Override
+            public boolean accept(File file) {
+                return !file.isHidden();
             }
         });
         return list;
