@@ -87,23 +87,23 @@ public class LauncherActivity extends BaseActivity {
             @Override
 
             public void onClick(View view) {
-////				if(checkLogin()){
-////              文本存储
-////              MemoryManager.save(LauncherActivity.this, etAccountName.getText().toString() + "");
-//
-//                //shareprefence 存储
-//                SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
-//                editor.putString("name","tom");
-//                editor.putString("password","abc");
-////                editor.clear()
-//                editor.commit();
-//                Intent intent = new Intent().setClass(LauncherActivity.this, MainActivity.class);
-//                startActivity(intent);
-//
-////				}else{
-////					showToast("用戶密碼錯誤");
-////				}
-                call();
+//				if(checkLogin()){
+//              文本存储
+//              MemoryManager.save(LauncherActivity.this, etAccountName.getText().toString() + "");
+
+                //shareprefence 存储
+                SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
+                editor.putString("name","tom");
+                editor.putString("password","abc");
+//                editor.clear()
+                editor.commit();
+                Intent intent = new Intent().setClass(LauncherActivity.this, MainActivity.class);
+                startActivity(intent);
+
+//				}else{
+//					showToast("用戶密碼錯誤");
+//				}
+//                call();
             }
         });
 
@@ -113,15 +113,15 @@ public class LauncherActivity extends BaseActivity {
 
     public void call() {
         //检查权限
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
-                != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_DENIED) {
             //进入到这里代表没有权限.
 
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CALL_PHONE)){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
                 //已经禁止提示了
                 Toast.makeText(LauncherActivity.this, "您已禁止该权限，需要重新开启。", Toast.LENGTH_SHORT).show();
             }else{
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 100);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
 
             }
 

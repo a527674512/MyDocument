@@ -5,60 +5,329 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.lhf.mydocument.activity.MainActivity">
+    <include
+        android:id="@+id/title" layout="@layout/layout_title"/>
 
-    <RelativeLayout
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_myviewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    </android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
         <RelativeLayout
-            android:id="@+id/title"
+            android:id="@+id/rl_title"
             android:layout_width="match_parent"
-            android:layout_height="200dip">
+            android:background="@drawable/bg_memory_status"
+            android:layout_height="100dip">
+
             <TextView
                 android:id="@+id/memory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="内存:"/>
+                android:text="内存:"
+                android:textColor="@color/ivory"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/available_memory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_toRightOf="@id/memory"
-                android:text="可用"/>
+                android:textColor="@color/ivory"
+                android:text="可用"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/total_memory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_toRightOf="@id/available_memory"
-                android:text="/共"/>
+                android:textColor="@color/ivory"
+                android:text="/共"
+                android:textSize="20sp" />
+
 
         </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/gv_files"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rl_title"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_log_drable"
+                    android:text="日志" />
+
+                <Button
+                    android:id="@+id/btn_2"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_texteditdrable"
+                    android:text="文本编辑" />
+
+                <Button
+                    android:id="@+id/btn_3"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_clear_drable"
+                    android:text="清理" />
+
+                <Button
+                    android:id="@+id/btn_4"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_screen_drable"
+                    android:text="投屏" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:background="@color/colorTransparent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_5"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_faset_exchange_drable"
+                    android:text="快传" />
+
+                <Button
+                    android:id="@+id/btn_6"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_application_drable"
+                    android:text="应用" />
+
+                <Button
+                    android:id="@+id/btn_7"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_image_drable"
+                    android:text="图片" />
+
+                <Button
+                    android:id="@+id/btn_8"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorTransparent"
+                    android:drawableTop="@mipmap/btn_music_drable"
+                    android:text="音乐" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_rest"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:orientation="vertical"
+                android:background="@color/colorTransparent"
+                android:layout_weight="3">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/btn_9"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_video_drable"
+                        android:text="视频" />
+
+                    <Button
+                        android:id="@+id/btn_10"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_cloud_disk_drable"
+                        android:text="网盘" />
+
+                    <Button
+                        android:id="@+id/btn_11"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_download_drable"
+                        android:text="下载" />
+
+                    <Button
+                        android:id="@+id/btn_12"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_text_file_drable"
+                        android:text="文档" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:background="@color/colorTransparent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/btn_13"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_my_net_drable"
+                        android:text="我的网络" />
+
+                    <Button
+                        android:id="@+id/btn_14"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_cycle_drable"
+                        android:text="回收站" />
+
+                    <Button
+                        android:id="@+id/btn_15"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_remote_control_drable"
+                        android:text="远程管理" />
+
+                    <Button
+                        android:id="@+id/btn_16"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_app_lock_drable"
+                        android:text="应用锁" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:background="@color/colorTransparent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/btn_17"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_secret_drable"
+                        android:text="加密库" />
+
+                    <Button
+                        android:id="@+id/btn_18"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@mipmap/btn_rar_drable"
+                        android:text="压缩管理" />
+
+                    <Button
+                        android:id="@+id/btn_19"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@drawable/excel"
+                        android:visibility="invisible" />
+
+                    <Button
+                        android:id="@+id/btn_20"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/colorTransparent"
+                        android:drawableTop="@drawable/excel"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/tv_open_close"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="打开"/>
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/addressbar_local_text"
-            android:text="/mnt/sdcard"
-            android:textColor="#FF000000"
-            android:gravity="center_vertical"
-            android:layout_alignBottom="@id/title"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/rl_title"
+            android:gravity="center_vertical"
+            android:text="/mnt/sdcard"
+            android:textColor="#FF000000" />
+
         <ListView
             android:id="@+id/listShow"
-            android:layout_below="@id/title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent"
+            android:layout_below="@id/rl_title"
+            android:visibility="gone"></ListView>
+
         <GridView
             android:id="@+id/gridShow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rl_title"
             android:columnWidth="64dip"
             android:numColumns="auto_fit"
-            android:layout_below="@id/title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></GridView>
+            android:visibility="gone"></GridView>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -22,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.CheckedTextView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +35,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener{
+public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, View.OnClickListener {
 
     private TextView tvTotalSize;
     private TextView tvAvailableSize;
@@ -85,17 +87,24 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private File mSelectedFile;
     private File mCoypFile;
 
-
+    private LinearLayout llRest;
     private ListView mListFileShow;
     private GridView mGridFileShow;
+    private ViewPager vpMyViewpager;
 
-    /** 导航栏显示目录 */
+    /**
+     * 导航栏显示目录
+     */
     private TextView mLocalText;
 
-    /** ListView绑定的数据源Adapter */
+    /**
+     * ListView绑定的数据源Adapter
+     */
     private FileAdapter2 mAdapter;
 
-    /** 是否可以退出 */
+    /**
+     * 是否可以退出
+     */
     private boolean canExit = false;
 
     private void loadSharedPreferences() {
@@ -116,8 +125,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        if(savedInstanceState != null){
-            String tempdata = savedInstanceState.getString( "data_key");
+        if (savedInstanceState != null) {
+            String tempdata = savedInstanceState.getString("data_key");
         }
         initView();
         loadSharedPreferences();
@@ -128,7 +137,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -140,7 +149,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        switch (keyCode){
+        switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
                 break;
         }
@@ -150,19 +159,19 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch( item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.add_itm:
 
 //                Intent intent = new Intent(Intent.ACTION_VIEW);
 //                intent.setData(Uri.parse("http://www.baidu.com"));
 //                Intent intent = new Intent(Intent.ACTION_DIAL);
 //                intent.setData(Uri.parse("10086"));
-                Intent intent = new Intent().setClass(this,NormalActivity.class);
+                Intent intent = new Intent().setClass(this, NormalActivity.class);
                 startActivity(intent);
 //                showToast("add");
                 break;
             case R.id.remove_item:
-                Intent intent1 = new Intent().setClass(this,DialogActivity.class);
+                Intent intent1 = new Intent().setClass(this, DialogActivity.class);
                 startActivity(intent1);
                 break;
             default:
@@ -175,18 +184,20 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         String tempData = "tempdata";
-        outState.putString("data_key",tempData);
+        outState.putString("data_key", tempData);
     }
 
-    private void initView(){
+    private void initView() {
         tvTotalSize = findViewById(R.id.total_memory);
-        tvAvailableSize= findViewById(R.id.available_memory);
+        tvAvailableSize = findViewById(R.id.available_memory);
         mLocalText = findViewById(R.id.addressbar_local_text);
+        llRest = findViewById(R.id.ll_rest);
+        vpMyViewpager = findViewById(R.id.vp_myviewpager);
     }
 
-    private void updateUI(){
-        tvTotalSize.setText("共计"+MemoryManager.getTotalMemorySize());
-        tvAvailableSize.setText("可用"+MemoryManager.getSDAvailableSize()+"/");
+    private void updateUI() {
+        tvTotalSize.setText("共计" + MemoryManager.getTotalMemorySize());
+        tvAvailableSize.setText("可用" + MemoryManager.getSDAvailableSize() + "/");
     }
 
 
@@ -235,44 +246,43 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
 
     private void showViewMode(boolean mode) {
-        if ("viewmode_list".equals(mViewMode)) {
-            mListFileShow.setVisibility(View.VISIBLE);
-            if (mode) {
-                int[] resid = new int[] { R.id.image_file_pic,
-                        R.id.text_file_name };
-                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-                        R.layout.list_show_item, resid);
-            } else {
-                int[] resid = new int[] { R.id.image_file_pic,
-                        R.id.text_file_name, R.id.checked_text_file_name };
-                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-                        R.layout.list_show_checked_item, resid);
-            }
-            mListFileShow.setAdapter(mAdapter);
-            mGridFileShow.setVisibility(View.GONE);
-        } else {
-            mGridFileShow.setVisibility(View.VISIBLE);
-            if (mode) {
-                int[] resid = new int[] { R.id.image_file_pic,
-                        R.id.text_file_name };
-                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-                        R.layout.grid_show_item, resid);
-            } else {
-                int[] resid = new int[] { R.id.image_file_pic,
-                        R.id.text_file_name, R.id.checked_text_file_name };
-                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-                        R.layout.grid_show_checked_item, resid);
-            }
-            mGridFileShow.setAdapter(mAdapter);
-            mListFileShow.setVisibility(View.GONE);
-        }
+//        if ("viewmode_list".equals(mViewMode)) {
+//            mListFileShow.setVisibility(View.VISIBLE);
+//            if (mode) {
+//                int[] resid = new int[] { R.id.image_file_pic,
+//                        R.id.text_file_name };
+//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+//                        R.layout.list_show_item, resid);
+//            } else {
+//                int[] resid = new int[] { R.id.image_file_pic,
+//                        R.id.text_file_name, R.id.checked_text_file_name };
+//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+//                        R.layout.list_show_checked_item, resid);
+//            }
+//            mListFileShow.setAdapter(mAdapter);
+//            mGridFileShow.setVisibility(View.GONE);
+//        } else {
+//            mGridFileShow.setVisibility(View.VISIBLE);
+//            if (mode) {
+//                int[] resid = new int[] { R.id.image_file_pic,
+//                        R.id.text_file_name };
+//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+//                        R.layout.grid_show_item, resid);
+//            } else {
+//                int[] resid = new int[] { R.id.image_file_pic,
+//                        R.id.text_file_name, R.id.checked_text_file_name };
+//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+//                        R.layout.grid_show_checked_item, resid);
+//            }
+//            mGridFileShow.setAdapter(mAdapter);
+//            mListFileShow.setVisibility(View.GONE);
+//        }
     }
 
     /**
      * 刷新目录，将传入的目录显示到ListView中
      *
-     * @param dir
-     *            刷新的目录
+     * @param dir 刷新的目录
      */
     private void freshDirectory(File dir) {
         mCurrentDir = dir;
@@ -286,7 +296,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         }
 
         if (null == files || files.length == 0) {
-            mCurrentListFiles = new File[] { new File(dir.getParentFile(), ".") };
+            mCurrentListFiles = new File[]{new File(dir.getParentFile(), ".")};
         } else {
             mCurrentListFiles = files;
             MemoryManager.sort(mCurrentListFiles, mOrderBy);
@@ -313,7 +323,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         String type = "*/*";
         String fileName = operatedFile.getName();
         type = MemoryManager.getFileType(fileName);
-        if("*/*".equals(type)){
+        if ("*/*".equals(type)) {
             Toast.makeText(this, "不支持的文件格式", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -347,6 +357,56 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
         return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_1:
+                break;
+            case R.id.btn_2:
+                break;
+            case R.id.btn_3:
+                break;
+            case R.id.btn_4:
+                break;
+            case R.id.btn_5:
+                break;
+            case R.id.btn_6:
+                break;
+            case R.id.btn_7:
+                break;
+            case R.id.btn_8:
+                break;
+            case R.id.btn_9:
+                break;
+            case R.id.btn_10:
+                break;
+            case R.id.btn_11:
+                break;
+            case R.id.btn_12:
+                break;
+            case R.id.btn_13:
+                break;
+            case R.id.btn_14:
+                break;
+            case R.id.btn_15:
+                break;
+            case R.id.btn_16:
+                break;
+            case R.id.btn_17:
+                break;
+            case R.id.btn_18:
+                break;
+            case R.id.tv_open_close:
+
+                break;
+
+            default:
+                break;
+        }
+
+
     }
 
     // ***************InnerClass***************************
