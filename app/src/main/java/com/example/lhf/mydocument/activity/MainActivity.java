@@ -29,9 +29,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lhf.mydocument.R;
+import com.example.lhf.mydocument.adapter.ViewpagerAdapter;
+import com.example.lhf.mydocument.view.AllFilesPage;
+import com.example.lhf.mydocument.view.HomePage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -87,10 +91,16 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private File mSelectedFile;
     private File mCoypFile;
 
+    private List<View> views = new ArrayList<View>();
+
     private LinearLayout llRest;
     private ListView mListFileShow;
     private GridView mGridFileShow;
     private ViewPager vpMyViewpager;
+    private HomePage mHomePage;
+    private AllFilesPage mAllFilesPage;
+
+    private ViewpagerAdapter mViewpagerAdapter;
 
     /**
      * 导航栏显示目录
@@ -128,10 +138,12 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         if (savedInstanceState != null) {
             String tempdata = savedInstanceState.getString("data_key");
         }
-        initView();
+
         loadSharedPreferences();
-        updateUI();
         initFileList();
+        initView();
+        showViewPager();
+        updateUI();
         initListAndGridView();
     }
 
@@ -193,11 +205,21 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         mLocalText = findViewById(R.id.addressbar_local_text);
         llRest = findViewById(R.id.ll_rest);
         vpMyViewpager = findViewById(R.id.vp_myviewpager);
+        mHomePage = new HomePage(this);
+        mAllFilesPage = new AllFilesPage(this ,mCurrentListFiles);
+        views.add(mHomePage);
+        views.add(mAllFilesPage);
     }
 
     private void updateUI() {
         tvTotalSize.setText("共计" + MemoryManager.getTotalMemorySize());
         tvAvailableSize.setText("可用" + MemoryManager.getSDAvailableSize() + "/");
+    }
+
+    private void showViewPager(){
+        mViewpagerAdapter = new ViewpagerAdapter(views,this);
+        vpMyViewpager.setAdapter(mViewpagerAdapter);
+
     }
 
 
@@ -246,37 +268,37 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
 
     private void showViewMode(boolean mode) {
-//        if ("viewmode_list".equals(mViewMode)) {
-//            mListFileShow.setVisibility(View.VISIBLE);
-//            if (mode) {
-//                int[] resid = new int[] { R.id.image_file_pic,
-//                        R.id.text_file_name };
-//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-//                        R.layout.list_show_item, resid);
-//            } else {
-//                int[] resid = new int[] { R.id.image_file_pic,
-//                        R.id.text_file_name, R.id.checked_text_file_name };
-//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-//                        R.layout.list_show_checked_item, resid);
-//            }
-//            mListFileShow.setAdapter(mAdapter);
-//            mGridFileShow.setVisibility(View.GONE);
-//        } else {
-//            mGridFileShow.setVisibility(View.VISIBLE);
-//            if (mode) {
-//                int[] resid = new int[] { R.id.image_file_pic,
-//                        R.id.text_file_name };
-//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-//                        R.layout.grid_show_item, resid);
-//            } else {
-//                int[] resid = new int[] { R.id.image_file_pic,
-//                        R.id.text_file_name, R.id.checked_text_file_name };
-//                mAdapter = new FileAdapter2(this, mCurrentListFiles,
-//                        R.layout.grid_show_checked_item, resid);
-//            }
-//            mGridFileShow.setAdapter(mAdapter);
-//            mListFileShow.setVisibility(View.GONE);
-//        }
+        if ("viewmode_list".equals(mViewMode)) {
+            mListFileShow.setVisibility(View.VISIBLE);
+            if (mode) {
+                int[] resid = new int[] { R.id.image_file_pic,
+                        R.id.text_file_name };
+                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+                        R.layout.list_show_item, resid);
+            } else {
+                int[] resid = new int[] { R.id.image_file_pic,
+                        R.id.text_file_name, R.id.checked_text_file_name };
+                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+                        R.layout.list_show_checked_item, resid);
+            }
+            mListFileShow.setAdapter(mAdapter);
+            mGridFileShow.setVisibility(View.GONE);
+        } else {
+            mGridFileShow.setVisibility(View.VISIBLE);
+            if (mode) {
+                int[] resid = new int[] { R.id.image_file_pic,
+                        R.id.text_file_name };
+                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+                        R.layout.grid_show_item, resid);
+            } else {
+                int[] resid = new int[] { R.id.image_file_pic,
+                        R.id.text_file_name, R.id.checked_text_file_name };
+                mAdapter = new FileAdapter2(this, mCurrentListFiles,
+                        R.layout.grid_show_checked_item, resid);
+            }
+            mGridFileShow.setAdapter(mAdapter);
+            mListFileShow.setVisibility(View.GONE);
+        }
     }
 
     /**

@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.lhf.mydocument.activity.MainActivity">
-    <include
-        android:id="@+id/title" layout="@layout/layout_title"/>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_myviewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/title"
-        android:visibility="visible">
-
-    </android.support.v4.view.ViewPager>
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/title"
         android:background="@color/white"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <RelativeLayout
             android:id="@+id/rl_title"
@@ -65,8 +51,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/rl_title"
             android:background="@color/white"
-            android:orientation="vertical"
-            android:visibility="visible">
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
@@ -315,22 +300,8 @@
             android:text="/mnt/sdcard"
             android:textColor="#FF000000" />
 
-        <ListView
-            android:id="@+id/listShow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rl_title"
-            android:visibility="gone"></ListView>
 
-        <GridView
-            android:id="@+id/gridShow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rl_title"
-            android:columnWidth="64dip"
-            android:numColumns="auto_fit"
-            android:visibility="gone"></GridView>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
