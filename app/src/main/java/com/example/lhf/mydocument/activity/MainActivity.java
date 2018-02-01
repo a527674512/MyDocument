@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private TextView tvTotalSize;
     private TextView tvAvailableSize;
 
-    private static final File SD_CARD = Environment
+    public static final File SD_CARD = Environment
             .getExternalStorageDirectory();
     private static final String TAG = "FileManager";
     private static final int DIALOG_NO = 0;
@@ -155,7 +155,14 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void onBackPressed() {
-        finish();
+        if(vpMyViewpager.getCurrentItem() == 1 ){
+            if(!mAllFilesPage.upLevel()){
+                finish();
+            }
+        }else{
+            finish();
+        }
+
     }
 
     @Override
@@ -206,7 +213,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         llRest = findViewById(R.id.ll_rest);
         vpMyViewpager = findViewById(R.id.vp_myviewpager);
         mHomePage = new HomePage(this);
-        mAllFilesPage = new AllFilesPage(this ,mCurrentListFiles);
+        mAllFilesPage = new AllFilesPage(this ,mCurrentDir);
         views.add(mHomePage);
         views.add(mAllFilesPage);
     }

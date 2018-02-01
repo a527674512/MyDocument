@@ -25,6 +25,7 @@ public class GridviewAdapter extends BaseAdapter {
     private List<Picture> pictures=new ArrayList<Picture>();
     private File file;
 
+
     public GridviewAdapter(File[] mCurrentListFiles, Context context) {
         super();
         this.context = context;
@@ -95,6 +96,11 @@ public class GridviewAdapter extends BaseAdapter {
     class ViewHolder {
         public TextView tvFileName;
         public ImageView ivFileIcon;
+    }
+
+    public void updataFiles(File[] mCurrentListFiles){
+        this.mCurrentListFiles = mCurrentListFiles;
+
     }
 
 }

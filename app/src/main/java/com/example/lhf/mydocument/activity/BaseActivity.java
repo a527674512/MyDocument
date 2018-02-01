@@ -57,6 +57,12 @@ public class BaseActivity extends Activity {
 
     }
 
+    public void showToast(Context context,String toast){
+
+        Toast.makeText(this,toast,Toast.LENGTH_SHORT).show();
+
+    }
+
     public void finishAll(){
         ActivityCollector.finishAll();
     }
