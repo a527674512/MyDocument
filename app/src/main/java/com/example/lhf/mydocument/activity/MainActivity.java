@@ -391,45 +391,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_1:
-                break;
-            case R.id.btn_2:
-                break;
-            case R.id.btn_3:
-                break;
-            case R.id.btn_4:
-                break;
-            case R.id.btn_5:
-                break;
-            case R.id.btn_6:
-                break;
-            case R.id.btn_7:
-                break;
-            case R.id.btn_8:
-                break;
-            case R.id.btn_9:
-                break;
-            case R.id.btn_10:
-                break;
-            case R.id.btn_11:
-                break;
-            case R.id.btn_12:
-                break;
-            case R.id.btn_13:
-                break;
-            case R.id.btn_14:
-                break;
-            case R.id.btn_15:
-                break;
-            case R.id.btn_16:
-                break;
-            case R.id.btn_17:
-                break;
-            case R.id.btn_18:
-                break;
-            case R.id.tv_open_close:
-
-                break;
 
             default:
                 break;

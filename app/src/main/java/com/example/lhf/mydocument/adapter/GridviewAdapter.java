@@ -1,6 +1,8 @@
 package com.example.lhf.mydocument.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Picture;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lhf.mydocument.R;
+import com.example.lhf.mydocument.util.FileType;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -85,6 +88,13 @@ public class GridviewAdapter extends BaseAdapter {
         file = mCurrentListFiles[position];
         viewHolder.ivFileIcon.setImageDrawable(context.getResources().getDrawable(R.mipmap.btn_application_drable));
         viewHolder.tvFileName.setText(file.getName());
+        String path = file.getPath();
+        // TODO: 2018/2/7   未完成图片选择 
+        if(FileType.getFileType(path) == "0" ){
+            Bitmap tempBitmap = BitmapFactory.decodeFile(path);
+            viewHolder.ivFileIcon.setImageBitmap(tempBitmap);//显示图片
+        }
+        file.getPath();
 //        // 给组件设置资源
 //        Picture picture = pictures.get(position);
 //        viewHolder.tvFileName.setImageResource(picture.getImageId());
