@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 public class FileType {
     public static final HashMap<String, String> mFileTypes = new HashMap<String, String>();
+
     static {
         //images
         mFileTypes.put("FFD8FF", "jpg");
@@ -44,10 +45,102 @@ public class FileType {
     }
 
     public static int FILE_IMAGE = 0;
+    public static int FILE_TEXT = 1;
+    public static int FILE_VIDEO = 2;
+    public static int FILE_MUSIC = 3;
+
+    //    public static int getFileTypes(String path) {
+//
+//        String fileType = getFileType(path);
+//        int types = -1;
+//
+//        switch (fileType) {
+//            case "jpg":
+//                types = FILE_IMAGE;
+//                break;
+//            case "png":
+//                types = FILE_IMAGE;
+//                break;
+//            case "gif":
+//                types = FILE_IMAGE;
+//                break;
+//            case "tif":
+//                types = FILE_IMAGE;
+//                break;
+//            case "bmp":
+//                types = FILE_IMAGE;
+//                break;
+//            case "dwg":
+//                break;
+//            case "psd":
+//                break;
+//            case "rtf":
+//                break;
+//            case "xml":
+//                types = FILE_TEXT;
+//                break;
+//            case "html":
+//                types = FILE_TEXT;
+//                break;
+//            case "eml":
+//                break;
+//            case "mdb":
+//                break;
+//            case "ps":
+//                break;
+//            case "pdf":
+//                break;
+//            case "zip":
+//                break;
+//            case "rar":
+//                break;
+//            case "wav":
+//                break;
+//            case "avi":
+//                types = FILE_VIDEO;
+//                break;
+//            case "mpg":
+//                types = FILE_VIDEO;
+//                break;
+//            case "mov":
+//                types = FILE_VIDEO;
+//                break;
+//            case "asf":
+//                break;
+//            case "mid":
+//                break;
+//            case "gz":
+//                break;
+//            default:
+//                break;
+//        }
+//
+//        return types;
+//
+//    }
+    public static int getFileTypes(String fileName) {
+        String type = "*/*";
+        int types = -1;
+        if (null != fileName && fileName.contains(".")) {
+            int lastIndexOf = fileName.lastIndexOf(".");
+            String end = fileName.substring(lastIndexOf + 1);
+            if ("jpg".equalsIgnoreCase(end) || "png".equalsIgnoreCase(end)
+                    || "gif".equalsIgnoreCase(end) || "bmp".equalsIgnoreCase(end)) {
+                type = "image/*";
+                types = 0;
+            } else if ("mp3".equalsIgnoreCase(end)) {
+                type = "audio/*";
+            } else if ("mp4".equalsIgnoreCase(end) || "3gp".equalsIgnoreCase(end)) {
+                type = "video/*";
+            }
+        }
+        return types;
+    }
 
     public static String getFileType(String filePath) {
         return mFileTypes.get(getFileHeader(filePath));
     }
+
     //获取文件头信息
     public static String getFileHeader(String filePath) {
         FileInputStream is = null;
@@ -58,16 +151,19 @@ public class FileType {
             is.read(b, 0, b.length);
             value = bytesToHexString(b);
         } catch (Exception e) {
+            e.printStackTrace();
         } finally {
-            if(null != is) {
+            if (null != is) {
                 try {
                     is.close();
-                } catch (IOException e) {}
+                } catch (IOException e) {
+                }
             }
         }
         return value;
     }
-    private static String bytesToHexString(byte[] src){
+
+    private static String bytesToHexString(byte[] src) {
         StringBuilder builder = new StringBuilder();
         if (src == null || src.length <= 0) {
             return null;
