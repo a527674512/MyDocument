@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.lhf.mydocument.R;
 import com.example.lhf.mydocument.util.AsyncLoadImage;
 import com.example.lhf.mydocument.util.CallbackImpl;
@@ -102,8 +103,25 @@ public class GridviewAdapter extends BaseAdapter {
 //                tempBitmap = ImageUtil.getZoomImage(tempBitmap,100);
 //                viewHolder.ivFileIcon.setImageBitmap(tempBitmap);//显示图片
                 // 异步加载图片并显示
-                asyncLoadImage.loadDrawable(path,
-                        new CallbackImpl(viewHolder.ivFileIcon));
+//                asyncLoadImage.loadDrawable(path,
+//                        new CallbackImpl(viewHolder.ivFileIcon));
+
+
+                // 加载本地图片
+//                File file = new File(getExternalCacheDir() + "/image.jpg");
+                Glide.with(context).load(file).override(300,240).into(viewHolder.ivFileIcon);
+//
+//                加载应用资源
+//                int resource = R.drawable.image;
+//                Glide.with(this).load(resource).into(imageView);
+//
+//                加载二进制流
+//                byte[] image = getImageBytes();
+//                Glide.with(this).load(image).into(imageView);
+//
+//                 加载Uri对象
+//                Uri imageUri = getImageUri();
+//                Glide.with(this).load(imageUri).into(imageView);
             }
         }
 

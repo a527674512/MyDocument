@@ -3,6 +3,7 @@ package com.example.lhf.mydocument.util;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
@@ -40,6 +41,7 @@ public class ImageUtil {
             bitmap = getZoomImage(bitmap, bitmap.getWidth() / Math.sqrt(multiple), bitmap.getHeight() / Math.sqrt(multiple));
             currentSize = bitmapToByteArray(bitmap, false).length / 1024;
         }
+        Log.e("size",currentSize+""+"KB");
         return bitmap;
     }
 

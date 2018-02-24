@@ -45,6 +45,7 @@ public class AsyncLoadImage {
                 Bitmap bm = Bitmap.createScaledBitmap(
                         BitmapFactory.decodeFile(imagePath), 120, 160, true);
                 bm = ImageUtil.getZoomImage(bm,10);
+                bm = ImageUtil.getZoomImage(bm,100,100);
                 Message msg = handler.obtainMessage(0, bm);
                 handler.sendMessage(msg);
             };
